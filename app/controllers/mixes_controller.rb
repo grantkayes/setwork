@@ -20,6 +20,13 @@ class MixesController < ApplicationController
     @mixes = Mix.all
   end
 
+  def destroy
+    @mix = Mix.find(params[:id])
+    @mix.destroy
+
+    redirect_to root_path
+  end
+
   def mix_params
     params.require(:mix).permit(:name)
   end

@@ -1,3 +1,7 @@
+<h1> Mixes </h1>
+
+<%= link_to 'upload new mix', new_mix_path, class: 'button alt' %>
+
 <% @mixes.each do |mix| %>
   <p><%= mix.name %></p>
 <% end %>
