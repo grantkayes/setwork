@@ -1,4 +1,8 @@
 class MixesController < ApplicationController
+  def show
+    @mix = Mix.find(params[:id]) 
+  end
+
   def new
   end
 
@@ -22,9 +26,23 @@ class MixesController < ApplicationController
 
   def destroy
     @mix = Mix.find(params[:id])
-    @mix.destroy
+    if @mix.destroy
+      redirect_to root_path
+    end
+  end
 
-    redirect_to root_path
+  def edit
+    @mix = Mix.find(params[:id])
+  end
+
+  def update
+    @mix = Mix.find(params[:id])
+
+    respond_to do |format|
+      if @mix.update(params)
+        format.html { redirect_to '/', notice: 'Mix was successfully updated' }
+      end
+    end
   end
 
   def mix_params

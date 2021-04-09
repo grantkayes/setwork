@@ -1,7 +1,11 @@
 <h1> Mixes </h1>
 
-<%= link_to 'upload new mix', new_mix_path, class: 'button alt' %>
+<%= link_to 'upload new mix', new_mix_path, class: 'button' %>
 
 <% @mixes.each do |mix| %>
-  <p><%= mix.name %></p>
+  <p>
+    <%= mix.name %>
+    <%= link_to 'update', edit_mix_path(mix.id), class: 'button' %>
+    <%= button_to 'Delete', mix_path(mix), method: :delete, data: {confirm: "Are you sure"} %>
+  </p>
 <% end %>
